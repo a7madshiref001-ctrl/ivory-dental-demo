@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Reports · Ivory Dental</title>
+<meta name="theme-color" content="#F7F5F2">
+<meta property="og:title" content="Ivory Dental · Doctor">
+<meta property="og:description" content="لوحة الدكتور: 4 أرقام بتقول العيادة ماشية إزاي (Demo).">
+<meta property="og:image" content="https://a7madshiref001-ctrl.github.io/ivory-dental-demo/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Readex+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ivory.css?v=3">
+<style>
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--card);border:1px solid var(--line-2)}
+.seg button{height:34px;padding:0 16px;border-radius:999px;font-size:13px;direction:ltr;color:var(--muted);transition:background-color .2s,color .2s}
+.seg button.on{background:var(--ink);color:#fff}
+.strip{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px;margin-bottom:12px}
+.strip .live{flex:none}
+.strip b{font-weight:500}
+.strip .sep{width:1px;height:18px;background:var(--line)}
+.strip a{margin-right:auto;font-size:13px;color:var(--teal);display:inline-flex;align-items:center;gap:4px}
+.strip a .ico{width:16px;height:16px}
+.collected{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:4px 0 18px;color:var(--ink-2)}
+.collected .big{font-family:var(--f-en);font-size:44px;line-height:1;color:var(--ink);direction:ltr}
+.collected .bump{animation:bump .8s var(--ease)}
+@keyframes bump{40%{color:var(--teal)}}
+.kgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:1000px){.kgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.k{padding:16px;display:grid;align-content:start;gap:2px;min-height:182px}
+.kv{font-family:var(--f-en);font-weight:400;font-size:58px;line-height:1;direction:ltr;text-align:right;margin-top:8px}
+.k p{font-size:13px;color:var(--ink-2);line-height:1.45}
+.k .viz{margin-top:auto;padding-top:12px}
+.k.hot{background:var(--ink);color:#fff;border-color:var(--ink)}
+.k.hot .label{color:rgba(255,255,255,.6)}
+.k.hot p{color:rgba(255,255,255,.8)}
+.fill-bar{height:10px;border-radius:10px;background:var(--coral-50);border:1px dashed var(--coral);overflow:hidden;margin-bottom:6px}
+.fill-bar i{display:block;height:100%;background:var(--teal);border-radius:10px;transform-origin:right;animation:growX 1.1s var(--ease) both .2s}
+.k small{font-size:12px}
+.spark{width:100%;height:36px;overflow:visible}
+.spark path{fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.spark circle{fill:var(--teal)}
+.down{color:var(--teal);font-weight:600}
+.money-bar{height:6px;border-radius:6px;background:rgba(255,255,255,.18);overflow:hidden}
+.money-bar i{display:block;height:100%;width:72%;background:#fff;border-radius:6px;transform-origin:right;animation:growX 1.2s var(--ease) both .3s}
+@keyframes growX{from{transform:scaleX(0)}}
+.ring-mini{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.blk{margin-top:28px}
+.blk-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.plans{overflow:hidden}
+.plan{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 16px;border-top:1px solid var(--line-2)}
+.plan:first-child{border-top:0}
+.plan .avt{width:40px;height:40px}
+.plan b{font-weight:500;display:block;line-height:1.35}
+.plan small{font-size:12.5px;color:var(--muted)}
+.plan .val{font-size:13px;color:var(--teal);font-weight:500;margin-right:6px}
+.plan .btn{height:36px;padding:0 14px;font-size:13px}
+.plan .btn.sent{background:var(--teal-50);color:var(--teal-ink);border-color:var(--teal-50)}
+@media (max-width:420px){.plan{grid-template-columns:minmax(0,1fr) auto}.plan .avt{display:none}}
+.two{display:grid;gap:12px;margin-top:12px}
+@media (min-width:1000px){.two{grid-template-columns:1fr 1fr}}
+.panel{padding:18px}
+.bars{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:end;height:170px;margin-top:14px;direction:ltr}
+.bars .col{display:grid;grid-template-rows:1fr auto;gap:6px;height:100%;text-align:center}
+.bars .stack{display:flex;flex-direction:column;justify-content:flex-end;border-radius:10px;overflow:hidden;background:var(--line-2)}
+.bars .stack i{display:block;background:var(--teal);border-radius:10px 10px 0 0;transform-origin:bottom;animation:growY 1s var(--ease) both;animation-delay:var(--d)}
+.bars .col small{font-size:11px;color:var(--muted);letter-spacing:.06em}
+.bars .col b{font-size:11px;color:var(--ink-2);font-weight:500}
+@keyframes growY{from{transform:scaleY(0)}}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-top:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;background:var(--teal)}
+.legend i.f{background:var(--line-2)}
+.src li{display:grid;grid-template-columns:112px minmax(0,1fr) 40px;gap:10px;align-items:center;padding:9px 0;font-size:13.5px}
+.src .nm{display:flex;align-items:center;gap:8px;direction:ltr;justify-content:flex-end}
+.src .track{height:10px;border-radius:10px;background:var(--line-2);overflow:hidden}
+.src .track i{display:block;height:100%;border-radius:10px;background:var(--teal);transform-origin:right;animation:growX 1.1s var(--ease) both;animation-delay:var(--d)}
+.src .vz i{background:var(--coral)}
+.src .pc{font-size:13px;color:var(--ink-2);direction:ltr;text-align:left}
+.insight{display:flex;gap:10px;align-items:center;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--teal-50);color:var(--teal-ink);font-size:13.5px;line-height:1.5}
+.insight .ico{flex:none}
+.revs{padding:18px;display:grid;gap:14px}
+@media (min-width:1000px){.revs{grid-template-columns:230px 1fr 1fr;align-items:center}}
+.rv-big{display:flex;align-items:flex-end;gap:12px;margin-top:8px}
+.rv-big b{font-family:var(--f-en);font-weight:400;font-size:76px;line-height:.8;direction:ltr}
+.stars{display:inline-flex;gap:2px;color:var(--gold);direction:ltr}
+.stars .ico{width:15px;height:15px;fill:currentColor;stroke:none}
+.rq{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:var(--paper);font-size:14px;line-height:1.55}
+.rq .avt{width:36px;height:36px}
+.rq footer{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-top:6px}
+.rq svg.brand{width:13px;height:13px}
+</style>
+</head>
+<body>
+<main>
+  <div class="p-head">
+    <div><span class="label">Good evening, Dr. Youssef</span><h1 class="title" id="period">This week</h1></div>
+    <div class="seg" id="seg"><button class="on" data-p="week">Week</button><button data-p="month">Month</button></div>
+  </div>
+
+  <div class="card strip rv" id="strip"></div>
+  <p class="collected">اتحصّل <span class="big tnum" id="collected"></span><span>ج</span><span class="chip teal" id="growth"></span></p>
+
+  <div class="kgrid" id="kgrid"></div>
+
+  <section class="blk">
+    <div class="blk-head"><span class="label">Unfinished plans</span><span class="muted" style="font-size:13px">بدأوا علاج ووقفوا</span></div>
+    <div class="card plans" id="plans"></div>
+  </section>
+
+  <div class="two">
+    <section class="card panel">
+      <span class="label">Bookings</span>
+      <div class="bars" id="bars"></div>
+      <div class="legend"><span><i></i>محجوز</span><span><i class="f"></i>فاضي</span></div>
+    </section>
+    <section class="card panel">
+      <span class="label">Where patients come from</span>
+      <ul class="src" id="src" style="margin-top:8px"></ul>
+      <div class="insight"><i data-i="sparkle"></i><span>كل حجز من موقعك أو الواتساب = من غير عمولة.</span></div>
+    </section>
+  </div>
+
+  <section class="blk">
+    <div class="card revs">
+      <div>
+        <span class="label">Reviews</span>
+        <div class="rv-big"><b id="rating">4.9</b><div><span class="stars" id="stars"></span><div class="muted" style="font-size:12.5px;display:flex;align-items:center;gap:6px"><i data-brand="google"></i><span id="revCount">860</span> تقييم</div></div></div>
+        <span class="chip teal" style="margin-top:12px" id="newRev"></span>
+      </div>
+      <div class="rq"><img class="avt" src="assets/img/av-5.jpg" alt=""><div>«كنت بخاف من دكتور الأسنان، هنا شرحولي كل خطوة.»<footer><i data-brand="google"></i>منى ع. · من يومين</footer></div></div>
+      <div class="rq"><img class="avt" src="assets/img/av-4.jpg" alt=""><div>«الميعاد مظبوط، ومستنيتش غير خمس دقايق.»<footer><i data-brand="google"></i>كريم ف. · امبارح</footer></div></div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/ivory.js?v=3"></script>
+<script>
+(function () {
+  const { icon, brand, avatar, money, toast, fmt, desk, queueFrom } = IV;
+  IV.shell({ active: 'reports', user: 'doctor', search: 'دوّر على مريض أو خطة…' });
+  const $ = (s) => document.querySelector(s);
+
+  const DATA = {
+    week: {
+      title: 'This week', collected: 38400, growth: '+12%',
+      empty: 9, emptyCost: 4050, noshow: 11, noshowWas: 19, spark: [19, 18, 17, 15, 14, 12, 11],
+      plans: 9, plansValue: 46500, due: 27, newRev: '+6',
+      bars: [[15, 16], [14, 16], [16, 16], [13, 16], [15, 16], [14, 16]],
+      src: [['facebook', 'Facebook', 41], ['referral', 'Referrals', 27], ['vezeeta', 'Vezeeta', 18], ['google', 'Google', 10], ['walkin', 'Walk-in', 4]],
+    },
+    month: {
+      title: 'This month', collected: 152600, growth: '+9%',
+      empty: 38, emptyCost: 17100, noshow: 12, noshowWas: 19, spark: [19, 19, 17, 16, 15, 13, 12],
+      plans: 9, plansValue: 46500, due: 27, newRev: '+23',
+      bars: [[58, 64], [56, 64], [62, 64], [53, 64], [60, 64], [57, 64]],
+      src: [['facebook', 'Facebook', 38], ['referral', 'Referrals', 30], ['vezeeta', 'Vezeeta', 17], ['google', 'Google', 11], ['walkin', 'Walk-in', 4]],
+    },
+  };
+  const PLANS = [
+    { n: 'خالد منصور', what: 'زراعة · فاضل جلستين', v: 9000, last: 52 },
+    { n: 'إيمان رشاد', what: 'تقويم · متابعة شهرية', v: 1500, last: 38 },
+    { n: 'عمرو حسن', what: 'عصب + طربوش', v: 3200, last: 30 },
+    { n: 'دينا فاروق', what: 'حشو 3 سنان', v: 1800, last: 24 },
+    { n: 'مصطفى جمال', what: 'تبييض · الجلسة التانية', v: 1200, last: 21 },
+  ];
+  let period = 'week';
+  let extra = 0;
+
+  function spark(vals) {
+    const max = Math.max(...vals);
+    const min = Math.min(...vals);
+    const pts = vals.map((v, i) => [i * (200 / (vals.length - 1)), 4 + (1 - (v - min) / ((max - min) || 1)) * 28]);
+    const d = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+    const last = pts[pts.length - 1];
+    return `<svg class="spark" viewBox="0 0 200 36" preserveAspectRatio="none" aria-hidden="true"><path d="${d}" vector-effect="non-scaling-stroke"/><circle cx="${last[0]}" cy="${last[1]}" r="3.5"/></svg>`;
+  }
+
+  function render(p, animate) {
+    const D = DATA[p];
+    $('#period').textContent = D.title;
+    const total = D.collected + extra;
+    const c = $('#collected');
+    c.textContent = fmt(total);
+    if (animate) { c.dataset.count = total; IV.countUp(c); }
+    $('#growth').innerHTML = `<span class="ltr">${D.growth}</span>`;
+    $('#newRev').innerHTML = `<span class="ltr">${D.newRev} this ${p}</span>`;
+    const cap = D.bars.reduce((s, b) => s + b[1], 0);
+    $('#kgrid').innerHTML = `
+      <article class="card k">
+        <span class="label">Empty chairs</span>
+        <b class="kv" data-count="${D.empty}">${D.empty}</b>
+        <p>≈ ${money(D.emptyCost)} ممكن تتعوّض</p>
+        <div class="viz"><div class="fill-bar"><i style="width:${((cap - D.empty) / cap) * 100}%"></i></div><small class="muted tnum">${cap - D.empty}/${cap} محجوز</small></div>
+      </article>
+      <article class="card k">
+        <span class="label">No-shows</span>
+        <b class="kv" data-count="${D.noshow}" data-suffix="%">${D.noshow}%</b>
+        <p><span class="down">↓</span> كانت ${D.noshowWas}% قبل التذكير</p>
+        <div class="viz">${spark(D.spark)}</div>
+      </article>
+      <article class="card k hot">
+        <span class="label">Unfinished plans</span>
+        <b class="kv" data-count="${D.plans}">${D.plans}</b>
+        <p>${money(D.plansValue)} مستنية تتكمّل</p>
+        <div class="viz"><div class="money-bar"><i></i></div></div>
+      </article>
+      <article class="card k">
+        <span class="label">Cleaning due</span>
+        <b class="kv" data-count="${D.due}">${D.due}</b>
+        <p>عدّى عليهم 6 شهور</p>
+        <div class="viz ring-mini">${brand('whatsapp')}التذكير بيتبعت لوحده</div>
+      </article>`;
+    if (animate) IV.countAll($('#kgrid'));
+
+    const DAYS = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'];
+    $('#bars').innerHTML = D.bars.map(([b, c2], i) => `
+      <div class="col">
+        <div class="stack"><i style="height:${(b / c2) * 100}%;--d:${i * 70}ms"></i></div>
+        <div><small>${DAYS[i]}</small><br><b>${b}/${c2}</b></div>
+      </div>`).join('');
+    $('#src').innerHTML = D.src.map(([k, n, v], i) => `
+      <li class="${k === 'vezeeta' ? 'vz' : ''}">
+        <span class="nm">${brand(k)}${n}</span>
+        <span class="track"><i style="width:${v / D.src[0][2] * 100}%;--d:${i * 80}ms"></i></span>
+        <span class="pc">${v}%</span>
+      </li>`).join('');
+  }
+
+  /* live strip: what the front desk sees right now */
+  function paintStrip() {
+    const q = queueFrom(desk.get());
+    $('#strip').innerHTML = `<span class="live"></span><span class="label" style="color:var(--teal-ink)">Now</span>
+      <span>${q.now ? `<b class="ltr">A-${q.now}</b> جوه · ${q.nowName}` : 'مفيش حد جوه'}</span><span class="sep"></span>
+      <span><b>${q.waiting.length}</b> مستنيين</span><span class="sep"></span>
+      <span><b>${q.free}</b> فاضي النهارده</span>
+      <a href="desk.html">Front desk${icon('chev')}</a>`;
+  }
+  paintStrip();
+  desk.on(paintStrip);
+
+  $('#plans').innerHTML = PLANS.map((x, i) => `
+    <div class="plan">
+      ${avatar(x.n)}
+      <div><b>${x.n}<span class="val">${money(x.v)}</span></b><small>${x.what} · آخر زيارة من ${x.last} يوم</small></div>
+      <button class="btn btn-ghost" data-remind="${i}">${icon('chat')}فكّره</button>
+    </div>`).join('');
+  $('#plans').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-remind]');
+    if (!b || b.classList.contains('sent')) return;
+    b.classList.add('sent');
+    b.innerHTML = icon('check') + 'اتبعت';
+    IV.feed.add({ ic: 'whatsapp', t: `رسالة تذكير اتبعت لـ ${PLANS[+b.dataset.remind].n}` });
+  });
+  $('#search').addEventListener('input', (e) => {
+    const q = e.target.value.trim();
+    document.querySelectorAll('.plan').forEach((el, i) => { el.style.display = !q || PLANS[i].n.includes(q) ? '' : 'none'; });
+  });
+
+  $('#stars').innerHTML = icon('star').repeat(5);
+  $('#seg').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-p]');
+    if (!b) return;
+    period = b.dataset.p;
+    document.querySelectorAll('#seg button').forEach((x) => x.classList.toggle('on', x === b));
+    render(period, true);
+  });
+
+  IV.live([
+    { after: 6000, run() {
+      extra += 1800;
+      const c = $('#collected');
+      c.dataset.from = DATA[period].collected + extra - 1800;
+      c.dataset.count = DATA[period].collected + extra;
+      IV.countUp(c);
+      c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump');
+      return { ic: 'pay', t: 'اتدفع 1,800 ج · منى عادل · علاج عصب' };
+    } },
+    { after: 22000, run() {
+      $('#revCount').textContent = '861';
+      return { ic: 'google', t: 'تقييم جديد ★★★★★ على جوجل · كريم ف.' };
+    } },
+    { after: 43000, run() { return { ic: 'facebook', t: 'حجز جديد من فيسبوك · كشف بكرة 6:00م' }; } },
+  ]);
+
+  render('week', true);
+  IV.reveal();
+})();
+</script>
+</body>
+</html>

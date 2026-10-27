@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ivory Dental · The System</title>
+<meta name="description" content="سيستم عيادة الأسنان: الموقع، تطبيق المريض، رسايل الواتساب، الاستقبال، ولوحة الدكتور.">
+<meta name="theme-color" content="#F7F5F2">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Readex+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta property="og:title" content="Ivory Dental · The clinic system">
+<meta property="og:description" content="سيستم عيادة أسنان كامل: موقع، تطبيق للمريض، واتساب أوتوماتيك، استقبال، ولوحة للدكتور (Demo).">
+<meta property="og:image" content="https://a7madshiref001-ctrl.github.io/ivory-dental-demo/assets/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/ivory.css?v=3">
+<style>
+.hero{padding:36px 0 30px}
+.hub-status{display:flex;align-items:center;gap:8px}
+@media (max-width:380px){.hub-status .chip{display:none}}
+.v-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.v-pill{position:relative;align-self:end;margin-bottom:12px;display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--card);box-shadow:var(--shadow);font-size:12.5px}
+.v-avs{display:flex;direction:ltr;margin-top:10px;justify-content:center}
+.v-avs img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--paper);margin-left:-8px}
+.v-avs img:first-child{margin-left:0}
+.hero .title{font-size:clamp(54px,14vw,112px);margin:12px 0 16px}
+.hero p{font-size:17px;color:var(--ink-2);max-width:34ch}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:36px}
+@media (min-width:700px){.flow{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.flow li{display:grid;justify-items:center;gap:6px;padding:14px 6px;border-radius:var(--r);background:var(--card);border:1px solid var(--line-2);text-align:center}
+.flow .ico{color:var(--teal)}
+.flow b{font-family:var(--f-en);font-weight:400;font-size:21px;line-height:1;direction:ltr}
+.flow small{font-size:10px;letter-spacing:.14em;color:var(--muted);direction:ltr}
+.tiles{display:grid;gap:12px;padding-bottom:30px}
+@media (min-width:640px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tile{display:flex;flex-direction:column;padding:14px 14px 18px;transition:transform .3s var(--ease),border-color .2s}
+.tile:hover{transform:translateY(-4px);border-color:var(--teal-100)}
+.vis{height:150px;border-radius:16px;background:var(--paper);display:grid;place-items:center;overflow:hidden;position:relative;margin-bottom:16px}
+.tile-head{display:flex;justify-content:space-between;align-items:center;padding-inline:4px}
+.tile h2{font-family:var(--f-en);font-weight:400;font-size:34px;line-height:1;direction:ltr;text-align:right;margin:6px 4px 6px}
+.tile p{font-size:14px;color:var(--ink-2);padding-inline:4px}
+.go{width:36px;height:36px;border-radius:50%;background:var(--paper);display:grid;place-items:center;transition:background-color .2s,color .2s}
+.tile:hover .go{background:var(--teal);color:#fff}
+.go .ico{width:18px;height:18px}
+
+/* mini visuals */
+.v-site{width:78%;background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:10px 12px 12px}
+.v-site .bar{display:flex;gap:4px;margin-bottom:10px;direction:ltr}
+.v-site .bar i{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.v-site b{display:block;font-family:var(--f-en);font-weight:400;font-size:22px;line-height:1;direction:ltr;text-align:right}
+.v-site b em{color:var(--teal)}
+.v-site span{display:inline-flex;margin-top:10px;height:24px;padding:0 12px;border-radius:999px;background:var(--teal);color:#fff;font-size:11px;align-items:center}
+.v-arch{width:118px}
+.v-chat{display:grid;gap:6px;width:76%}
+.v-chat span{padding:7px 10px;border-radius:10px;font-size:12px;box-shadow:0 1px 1px rgba(0,0,0,.05);animation:msgIn .6s var(--ease) both}
+.v-chat .c{background:#fff;justify-self:start;border-top-right-radius:3px}
+.v-chat .p{background:#D9FDD3;justify-self:end;border-top-left-radius:3px;animation-delay:.5s}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}}
+.v-desk{text-align:center}
+.v-desk b{display:block;font-family:var(--f-en);font-weight:400;font-size:64px;line-height:.9;color:var(--teal);direction:ltr}
+.v-doc{display:grid;justify-items:center;gap:4px}
+.v-doc b{font-family:var(--f-en);font-weight:400;font-size:56px;line-height:.9;direction:ltr}
+.v-doc svg{width:120px;height:30px}
+.v-doc path{fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round}
+.v-tv{width:62%;aspect-ratio:16/10;border-radius:10px;border:5px solid var(--ink);background:#fff;display:grid;grid-template-columns:1.2fr 1fr;overflow:hidden}
+.v-tv div:first-child{display:grid;place-items:center;font-family:var(--f-en);font-size:30px;color:var(--teal);direction:ltr}
+.v-tv div:last-child{background:var(--teal-50);display:grid;place-items:center;color:var(--teal)}
+.foot{padding:24px 0 48px;text-align:center;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <span class="brand"><span data-mark></span><span class="stack"><span class="name">Ivory</span><span class="label">Dental</span></span></span>
+  <span class="hub-status"><span class="chip teal"><span class="live"></span><span class="ltr">System online</span></span><span class="demo-pill">Demo</span></span>
+</header>
+
+<main class="wrap">
+  <section class="hero rv">
+    <span class="label">The clinic system</span>
+    <h1 class="title">One calm system <em>for your clinic.</em></h1>
+    <p>من أول ما المريض يدوّر عليك، لحد ما يرجعلك تاني.</p>
+  </section>
+
+  <ol class="flow rv" aria-label="رحلة المريض">
+    <li><i data-i="globe"></i><b>Find</b><small>01</small></li>
+    <li><i data-i="calendar"></i><b>Book</b><small>02</small></li>
+    <li><i data-i="bell"></i><b>Remind</b><small>03</small></li>
+    <li><i data-i="tooth"></i><b>Visit</b><small>04</small></li>
+    <li><i data-i="heart"></i><b>Care</b><small>05</small></li>
+    <li><i data-i="redo"></i><b>Return</b><small>06</small></li>
+  </ol>
+
+  <section class="tiles">
+    <a class="card tile rv" href="site.html">
+      <div class="vis"><img class="v-photo" src="assets/img/storefront.jpg" alt="" loading="lazy"><div class="v-pill"><span class="live"></span>احجز ميعاد</div></div>
+      <div class="tile-head"><span class="label">01</span><span class="go"><i data-i="arrow"></i></span></div>
+      <h2>Website</h2>
+      <p>المريض يلاقيك، يشوف أسعارك، ويحجز في 3 ضغطات.</p>
+    </a>
+    <a class="card tile rv" href="app.html">
+      <div class="vis"><div class="v-arch" id="vArch"></div></div>
+      <div class="tile-head"><span class="label">02</span><span class="go"><i data-i="arrow"></i></span></div>
+      <h2>My Smile</h2>
+      <p>تطبيق المريض: ميعاده، خطة علاجه سنة بسنة، والدور لايف.</p>
+    </a>
+    <a class="card tile rv" href="journey.html">
+      <div class="vis"><div class="v-chat"><span class="c">حجزك اتأكد ✓ النهارده 7:30م</span><span class="p">تمام</span></div></div>
+      <div class="tile-head"><span class="label">03</span><span class="go"><i data-i="arrow"></i></span></div>
+      <h2>WhatsApp</h2>
+      <p>رسايل بتتبعت لوحدها، من الحجز لحد ما المريض يرجع.</p>
+    </a>
+    <a class="card tile rv" href="desk.html">
+      <div class="vis"><div class="v-desk"><span class="label">Now serving</span><b>A-12</b><div class="v-avs"><img src="assets/img/av-4.jpg" alt=""><img src="assets/img/av-8.jpg" alt=""><img src="assets/img/av-1.jpg" alt=""></div></div></div>
+      <div class="tile-head"><span class="label">04</span><span class="go"><i data-i="arrow"></i></span></div>
+      <h2>Front Desk</h2>
+      <p>السكرتيرة: مواعيد النهارده، مين أكّد، ومين جاي الدور عليه.</p>
+    </a>
+    <a class="card tile rv" href="doctor.html">
+      <div class="vis"><div class="v-doc"><span class="label">No-shows</span><b>11%</b><svg viewBox="0 0 120 30" aria-hidden="true"><path d="M2 6 L22 8 L42 11 L62 15 L82 19 L102 23 L118 25"/></svg></div></div>
+      <div class="tile-head"><span class="label">05</span><span class="go"><i data-i="arrow"></i></span></div>
+      <h2>Doctor</h2>
+      <p>4 أرقام بتقولك العيادة ماشية إزاي، وفين الفلوس الواقفة.</p>
+    </a>
+    <a class="card tile rv" href="screen.html">
+      <div class="vis"><div class="v-tv"><div>A-12</div><div><i data-i="tooth"></i></div></div></div>
+      <div class="tile-head"><span class="label">06</span><span class="go"><i data-i="arrow"></i></span></div>
+      <h2>Waiting Screen</h2>
+      <p>شاشة الانتظار: الدور ونصايح للأسنان، بتتحدث لوحدها.</p>
+    </a>
+  </section>
+</main>
+
+<footer class="foot">Demo · كل الأسماء والأرقام هنا وهمية.</footer>
+
+<script src="assets/ivory.js?v=3"></script>
+<script>
+  IV.toothChart(document.getElementById('vArch'), { status: IV.patient().teeth, numbers: false, cls: 'mini' });
+</script>
+</body>
+</html>

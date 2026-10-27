@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>WhatsApp Journey · Ivory Dental</title>
+<meta name="theme-color" content="#F7F5F2">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Readex+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta property="og:title" content="Ivory Dental · WhatsApp">
+<meta property="og:description" content="رسايل واتساب بتتبعت لوحدها من الحجز لحد ما المريض يرجع (Demo).">
+<meta property="og:image" content="https://a7madshiref001-ctrl.github.io/ivory-dental-demo/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/ivory.css?v=3">
+<style>
+.jr{display:grid;gap:22px}
+@media (min-width:1100px){.jr{grid-template-columns:minmax(0,1fr) 380px;gap:48px;align-items:start}}
+.jr-side .title{font-size:clamp(46px,11vw,72px);margin:8px 0 10px}
+.jr-side > p{color:var(--ink-2);font-size:15px;max-width:40ch}
+.mstats{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.mstats div{padding:10px 14px;border-radius:16px;background:var(--card);border:1px solid var(--line-2)}
+.mstats b{display:block;font-family:var(--f-en);font-weight:400;font-size:30px;line-height:1;direction:ltr;text-align:right}
+.mstats span{font-size:12px;color:var(--muted)}
+.sw{width:38px;height:22px;border-radius:22px;background:var(--teal);position:relative;flex:none;transition:background-color .2s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .2s var(--ease)}
+.sw.off{background:var(--line)}
+.sw.off::after{left:19px}
+.stage .st{font-size:11.5px;color:var(--muted);display:block}
+
+/* stage list (desktop) */
+.stages{display:none;margin-top:28px}
+@media (min-width:1100px){.stages{display:grid;gap:6px}}
+.stage{display:flex;align-items:center;gap:14px;width:100%;padding:12px 14px;border-radius:16px;border:1px solid transparent;text-align:right;transition:background-color .2s,border-color .2s}
+.stage:hover{background:var(--card)}
+.stage .n{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:12px;color:var(--muted);flex:none;direction:ltr;transition:.2s}
+.stage .grow{flex:1;display:grid;line-height:1.35}
+.stage b{font-family:var(--f-en);font-weight:400;font-size:24px;direction:ltr;text-align:right}
+.stage small{font-size:12.5px;color:var(--muted)}
+.stage.past .n{background:var(--teal-50);border-color:var(--teal-100);color:var(--teal)}
+.stage.on{background:var(--card);border-color:var(--line-2);box-shadow:var(--shadow)}
+.stage.on .n{background:var(--teal);border-color:var(--teal);color:#fff}
+.why{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 16px;border-radius:16px;background:var(--teal-50);color:var(--teal-ink);font-size:14px;line-height:1.5}
+.why .ico{flex:none}
+
+/* stepper (mobile) */
+.stepper{display:flex;align-items:center;gap:10px}
+@media (min-width:1100px){.stepper{display:none}}
+.stepper .grow{flex:1;min-width:0;text-align:center;line-height:1.3}
+.stepper b{display:block;font-family:var(--f-en);font-weight:400;font-size:26px;direction:ltr}
+.stepper small{font-size:12.5px;color:var(--muted)}
+.dots{display:flex;justify-content:center;gap:5px;margin-top:8px}
+.dots i{width:6px;height:6px;border-radius:6px;background:var(--line);transition:width .3s var(--ease),background-color .3s}
+.dots i.on{width:18px;background:var(--teal)}
+
+/* phone */
+.device{width:min(380px,100%);height:clamp(540px,74dvh,720px);margin-inline:auto;border:9px solid var(--ink);border-radius:46px;background:#fff;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.wa-top{display:flex;align-items:center;gap:10px;padding:14px 14px 12px;background:var(--teal);color:#fff;flex:none}
+.wa-top .logo-mark{width:38px;height:38px;border-radius:50%}
+.wa-top b{display:flex;align-items:center;gap:4px;font-weight:500;line-height:1.25;direction:ltr;justify-content:flex-end}
+.wa-top b .ico{width:16px;height:16px;color:#fff;fill:#25D366;stroke:#fff}
+.wa-top .wa{margin-right:auto;width:22px;height:22px;opacity:.95}
+.wa-top small{font-size:11.5px;opacity:.8}
+.chat{flex:1;overflow-y:auto;padding:14px 12px 18px;display:flex;flex-direction:column;gap:6px;scroll-behavior:smooth;background-color:#EFEAE2;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24'%3E%3Cpath d='M7 3c-2.5 0-4 2-4 4.6 0 2.2.8 3.6 1.4 5.4.6 1.9.8 4.2 1.4 6.3.4 1.3 1 2.2 1.9 2.2 1.1 0 1.5-1.2 1.8-2.6.3-1.6.6-3.6 2.5-3.6s2.2 2 2.5 3.6c.3 1.4.7 2.6 1.8 2.6.9 0 1.5-.9 1.9-2.2.6-2.1.8-4.4 1.4-6.3.6-1.8 1.4-3.2 1.4-5.4C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z' fill='none' stroke='%23DDD5C8' stroke-width='.7' transform='translate(6 6) scale(.5)'/%3E%3C/svg%3E")}
+.day-pill{align-self:center;background:#fff;color:var(--muted);font-size:11.5px;padding:4px 12px;border-radius:10px;margin:10px 0 4px;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.msg{max-width:84%;padding:8px 10px 6px;border-radius:12px;font-size:14px;line-height:1.55;box-shadow:0 1px 1px rgba(0,0,0,.06);animation:msgIn .35s var(--ease) both}
+.msg.c{align-self:flex-start;background:#fff;border-top-right-radius:4px}
+.msg.p{align-self:flex-end;background:#D9FDD3;border-top-left-radius:4px}
+.msg .meta{display:flex;justify-content:flex-end;align-items:center;gap:3px;font-size:10.5px;color:#8A9491;margin-top:2px;direction:ltr}
+.msg .meta .ico{width:14px;height:14px;color:#53BDEB;stroke-width:2}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px) scale(.98)}}
+.bcard{border-radius:9px;background:var(--paper);padding:10px 12px;margin-bottom:6px}
+.bcard b{display:block;font-weight:500}
+.bcard div{font-size:13px;color:var(--ink-2)}
+.link{display:flex;align-items:center;gap:10px;border-radius:9px;background:var(--paper);padding:10px;margin-top:6px}
+.link .si{width:40px;height:40px;border-radius:11px;background:var(--teal);color:#fff;display:grid;place-items:center;flex:none}
+.link b{display:block;font-weight:500;font-size:13.5px;direction:ltr;text-align:right;line-height:1.3}
+.link small{font-size:11.5px;color:var(--muted)}
+.loc{border-radius:9px;overflow:hidden;margin-bottom:6px;height:96px;background:#ECE7DF;position:relative}
+.loc svg{width:100%;height:100%}
+.qr{display:grid;gap:4px;margin-top:6px}
+.qr span{display:block;text-align:center;padding:8px;border-radius:9px;background:var(--paper);color:var(--teal);font-weight:500;font-size:13.5px;transition:background-color .3s,color .3s}
+.qr span.hit{background:var(--teal);color:#fff}
+.stars-row{display:flex;gap:2px;justify-content:center;padding:8px 0 4px;direction:ltr;color:var(--gold)}
+.stars-row .ico{width:24px;height:24px;fill:currentColor;stroke:none}
+.typing{align-self:flex-start;background:#fff;border-radius:12px;padding:10px 12px;display:flex;gap:4px;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.typing i{width:6px;height:6px;border-radius:50%;background:#B7BFBC;animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}
+.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.wa-bar{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#F4F1EC;flex:none}
+.wa-bar span{flex:1;height:38px;border-radius:999px;background:#fff;display:flex;align-items:center;padding:0 14px;font-size:13px;color:var(--muted)}
+.wa-bar .icon-btn{background:var(--teal);color:#fff;border:0;width:38px;height:38px}
+.wa-bar .icon-btn .ico{width:18px;height:18px}
+.ctrl{display:flex;justify-content:center;gap:8px;margin-top:14px}
+</style>
+</head>
+<body>
+<main>
+<div class="jr">
+  <div class="jr-side">
+    <span class="label" style="display:inline-flex;align-items:center;gap:6px"><i data-brand="whatsapp"></i>Automations</span>
+    <h1 class="title">Every message, <em>on time.</em></h1>
+    <p>رسايل بتتبعت لوحدها من أول الحجز لحد ما المريض يرجع، من غير ما حد يكتب حرف.</p>
+    <div class="mstats"><div><b>1,284</b><span>رسالة الشهر ده</span></div><div><b>92%</b><span>اتقرت</span></div><div><b>0</b><span>كتابة يدوي</span></div></div>
+    <ol class="stages" id="stages"></ol>
+    <div class="why" id="why"></div>
+  </div>
+
+  <div>
+    <div class="stepper" style="margin-bottom:14px">
+      <button class="icon-btn" id="prev" aria-label="اللي قبله"><i data-i="back"></i></button>
+      <div class="grow"><b id="stTitle"></b><small id="stWhen"></small><div class="dots" id="dots"></div></div>
+      <button class="icon-btn" id="next" aria-label="اللي بعده"><i data-i="chev"></i></button>
+    </div>
+    <div class="device">
+      <div class="wa-top">
+        <span data-mark="inv"></span>
+        <div><b>Ivory Dental<i data-i="verified"></i></b><small>حساب بيزنس · بيرد فورًا</small></div>
+        <i data-brand="whatsapp" class="wa"></i>
+      </div>
+      <div class="chat" id="chat"></div>
+      <div class="wa-bar"><span>اكتب رسالة</span><button class="icon-btn" tabindex="-1" aria-hidden="true"><i data-i="send"></i></button></div>
+    </div>
+    <div class="ctrl">
+      <button class="btn btn-ghost btn-sm" id="play"><i data-i="play"></i>شغّل الرحلة كلها</button>
+    </div>
+  </div>
+</div>
+</main>
+
+<script src="assets/ivory.js?v=3"></script>
+<script>
+(function () {
+  const { icon } = IV;
+  IV.shell({ active: 'messages', user: 'noha' });
+  const $ = (s) => document.querySelector(s);
+  const day = (n) => `${IV.dayLabel(IV.dayOffset(n))} · ${IV.dateAr(IV.dayOffset(n))}`;
+  const sara = IV.desk.get().find((r) => r.me) || { t: '7:30م' };
+
+  const STAGES = [
+    { en: 'Booked', ar: 'لحظة الحجز', day: day(-2), sent: 1284, why: 'المريض يطمن إن حجزه وصل، والسكرتيرة مش محتاجة ترد.' },
+    { en: 'Reminder', ar: 'قبلها بيوم', day: day(-1), sent: 1190, why: 'التذكير هو أكتر حاجة بتقلل الغياب.' },
+    { en: 'Visit day', ar: 'يوم الميعاد', day: day(0), sent: 1102, why: 'اللوكيشن والدور لايف، فمفيش زحمة في الانتظار.' },
+    { en: 'Aftercare', ar: 'بعد الجلسة', day: 'النهارده · بعد الجلسة', sent: 870, why: 'التعليمات مكتوبة قدامه بدل ما ينساها.' },
+    { en: 'Check-in', ar: 'تاني يوم', day: day(1), sent: 846, why: 'المريض يحس إن فيه حد مهتم بيه.' },
+    { en: 'Review', ar: 'بعد 3 أيام', day: day(3), sent: 402, why: 'بيتبعت بس للي ردّ «تمام»، فالتقييمات بتطلع حلوة.' },
+    { en: 'Recall', ar: 'بعد 6 شهور', day: `${IV.dateAr(IV.dayOffset(182))}`, sent: 215, why: 'المريض يرجع لوحده من غير إعلان.' },
+  ];
+
+  const tick = icon('check');
+  const MSGS = [
+    [
+      { c: `<div class="bcard"><b>حجزك اتأكد ✓</b><div>حشو · ${IV.dateAr(IV.dayOffset(0))} · ${sara.t}</div><div>د. يوسف حمدي</div></div>أهلًا سارة، مستنيينك.`, t: '9:14م', qr: ['تمام', 'تغيير الميعاد'], hit: 0 },
+      { p: 'تمام', t: '9:15م' },
+    ],
+    [
+      { c: `أهلًا سارة، فاكرة ميعادك بكرة الساعة ${sara.t}؟`, t: '6:00م', qr: ['أكيد جاية', 'محتاجة أغيّر'], hit: 0 },
+      { p: 'أكيد جاية', t: '6:21م' },
+      { c: 'تمام، مستنيينك.', t: '6:21م' },
+    ],
+    [
+      { c: `<div class="loc">${mapSvg()}</div>الجلسة حوالي 40 دقيقة، وكُلي قبلها عادي.`, t: '5:30م' },
+      { c: `رقمك في الدور 15. تابعي الدور لايف من هنا:<a class="link" href="app.html"><span class="si">${icon('clock')}</span><span><b>Live queue</b><small>My Smile</small></span></a>`, t: '7:02م' },
+    ],
+    [
+      { c: `سلامتك يا سارة. دي تعليمات بعد الحشو:<a class="link" href="app.html#care"><span class="si">${icon('tooth')}</span><span><b>After your filling</b><small>3 خطوات بسيطة</small></span></a>`, t: '8:25م' },
+    ],
+    [
+      { c: 'صباح الخير، عاملة إيه النهارده؟', t: '11:00ص', qr: ['تمام الحمد لله', 'فيه ألم'], hit: 0 },
+      { p: 'تمام الحمد لله', t: '11:40ص' },
+      { c: 'الحمد لله. لو احتجتي أي حاجة إحنا هنا.', t: '11:40ص' },
+    ],
+    [
+      { c: `رأيك يفرق معانا. تقيّمينا في ثانية؟<div class="stars-row">${icon('star').repeat(5)}</div>`, t: '1:00م', qr: ['قيّم على جوجل'], hit: 0 },
+      { p: 'خلصت ✓', t: '1:06م' },
+      { c: 'شكرًا يا سارة.', t: '1:06م' },
+    ],
+    [
+      { c: 'عدّى 6 شهور على آخر تنضيف. نحجزلك ميعاد؟', t: '12:00م', qr: ['احجزلي', 'بعدين'], hit: 0 },
+      { p: 'احجزلي', t: '12:18م' },
+      { c: `<div class="bcard"><b>اتحجز ✓</b><div>تنضيف · ${IV.dateAr(IV.dayOffset(185))} · 7:00م</div></div>`, t: '12:18م' },
+    ],
+  ];
+
+  function mapSvg() {
+    return `<svg viewBox="0 0 300 96" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="300" height="96" fill="#ECE7DF"/>
+      <path d="M232 -5 C 222 30, 248 60, 236 101 L 305 101 L 305 -5Z" fill="#D7E6E2"/>
+      <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"><path d="M0 34H226"/><path d="M0 74H226"/><path d="M80 0V96"/><path d="M162 0V96"/></g>
+      <circle cx="121" cy="54" r="14" fill="#0E6E63" opacity=".2"/><circle cx="121" cy="54" r="6" fill="#0E6E63"/>
+    </svg>`;
+  }
+
+  const chat = $('#chat');
+  let cur = -1;
+  let playing = false;
+  let runId = 0;
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  function bubble(m, animate) {
+    const el = document.createElement('div');
+    el.className = 'msg ' + (m.p ? 'p' : 'c');
+    if (!animate) el.style.animation = 'none';
+    const qr = m.qr ? `<div class="qr">${m.qr.map((q) => `<span>${q}</span>`).join('')}</div>` : '';
+    el.innerHTML = `${m.p || m.c}${qr}<div class="meta">${m.t}${m.p ? tick : ''}</div>`;
+    chat.appendChild(el);
+    return el;
+  }
+  function dayPill(i) {
+    const d = document.createElement('div');
+    d.className = 'day-pill';
+    d.textContent = STAGES[i].day;
+    chat.appendChild(d);
+  }
+  const scrollEnd = () => { chat.scrollTop = chat.scrollHeight; };
+
+  async function show(i, opts) {
+    const id = ++runId;
+    cur = i;
+    paintNav();
+    chat.innerHTML = '';
+    for (let s = 0; s < i; s++) {
+      dayPill(s);
+      MSGS[s].forEach((m) => {
+        const el = bubble(m, false);
+        if (m.qr && m.hit !== undefined) el.querySelectorAll('.qr span')[m.hit].classList.add('hit');
+      });
+    }
+    dayPill(i);
+    scrollEnd();
+    let lastC = null;
+    for (const m of MSGS[i]) {
+      if (id !== runId) return;
+      if (m.c) {
+        const ty = document.createElement('div');
+        ty.className = 'typing';
+        ty.innerHTML = '<i></i><i></i><i></i>';
+        chat.appendChild(ty);
+        scrollEnd();
+        await wait(opts && opts.fast ? 500 : 900);
+        if (id !== runId) return;
+        ty.remove();
+        lastC = { m, el: bubble(m, true) };
+      } else {
+        await wait(opts && opts.fast ? 600 : 1000);
+        if (id !== runId) return;
+        if (lastC && lastC.m.qr && lastC.m.hit !== undefined) lastC.el.querySelectorAll('.qr span')[lastC.m.hit].classList.add('hit');
+        await wait(250);
+        if (id !== runId) return;
+        bubble(m, true);
+      }
+      scrollEnd();
+    }
+    return id;
+  }
+
+  /* nav */
+  $('#stages').innerHTML = STAGES.map((s, i) => `
+    <li><button class="stage" data-st="${i}"><span class="n">${i + 1}</span><span class="grow"><b>${s.en}</b><small>${s.ar}</small><span class="st">اتبعت ${IV.fmt(s.sent)} مرة</span></span><span class="sw" role="switch" aria-checked="true" data-sw></span></button></li>`).join('');
+  $('#dots').innerHTML = STAGES.map(() => '<i></i>').join('');
+  function paintNav() {
+    document.querySelectorAll('.stage').forEach((b, i) => {
+      b.classList.toggle('on', i === cur);
+      b.classList.toggle('past', i < cur);
+    });
+    document.querySelectorAll('#dots i').forEach((d, i) => d.classList.toggle('on', i === cur));
+    $('#stTitle').textContent = STAGES[cur].en;
+    $('#stWhen').textContent = `${cur + 1}/${STAGES.length} · ${STAGES[cur].ar}`;
+    $('#why').innerHTML = `${icon('sparkle')}<span>${STAGES[cur].why}</span>`;
+    $('#prev').disabled = cur === 0;
+    $('#next').disabled = cur === STAGES.length - 1;
+    $('#prev').style.opacity = cur === 0 ? .35 : 1;
+    $('#next').style.opacity = cur === STAGES.length - 1 ? .35 : 1;
+  }
+  function stopPlay() {
+    playing = false;
+    $('#play').innerHTML = icon('play') + 'شغّل الرحلة كلها';
+  }
+  $('#stages').addEventListener('click', (e) => {
+    const sw = e.target.closest('[data-sw]');
+    if (sw) { e.stopPropagation(); sw.classList.toggle('off'); sw.setAttribute('aria-checked', !sw.classList.contains('off')); IV.toast(sw.classList.contains('off') ? 'الرسالة دي اتوقفت' : 'الرسالة دي اشتغلت تاني'); return; }
+    const b = e.target.closest('[data-st]');
+    if (b) { stopPlay(); show(+b.dataset.st); }
+  });
+  $('#prev').addEventListener('click', () => { if (cur > 0) { stopPlay(); show(cur - 1); } });
+  $('#next').addEventListener('click', () => { if (cur < STAGES.length - 1) { stopPlay(); show(cur + 1); } });
+  $('#play').addEventListener('click', async () => {
+    if (playing) { stopPlay(); return; }
+    playing = true;
+    $('#play').innerHTML = icon('pause') + 'وقّف';
+    for (let i = 0; i < STAGES.length && playing; i++) {
+      const id = await show(i, { fast: true });
+      if (!playing || id !== runId) return;
+      await wait(1400);
+    }
+    stopPlay();
+  });
+
+  show(0);
+})();
+</script>
+</body>
+</html>

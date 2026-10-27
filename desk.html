@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Today · Ivory Dental</title>
+<meta name="theme-color" content="#F7F5F2">
+<meta property="og:title" content="Ivory Dental · Front Desk">
+<meta property="og:description" content="شاشة الاستقبال: مواعيد النهارده والدور لايف (Demo).">
+<meta property="og:image" content="https://a7madshiref001-ctrl.github.io/ivory-dental-demo/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Readex+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ivory.css?v=3">
+<style>
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:14px}
+.kpi{padding:14px;border-radius:var(--r);background:var(--card);border:1px solid var(--line-2)}
+.kpi b{display:block;font-family:var(--f-en);font-weight:400;font-size:40px;line-height:1;direction:ltr;text-align:right}
+.kpi span{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);direction:ltr;text-align:right;margin-top:6px}
+.kpi.warn b{color:var(--coral)}
+@media (max-width:400px){.kpi{padding:10px}.kpi b{font-size:30px}.kpi span{font-size:9px;letter-spacing:.04em}}
+.grid{display:grid;gap:12px}
+@media (min-width:1100px){.grid{grid-template-columns:340px minmax(0,1fr);align-items:start}}
+
+/* now serving */
+.now{padding:20px}
+@media (min-width:1100px){.now{position:sticky;top:84px}}
+.now-top{display:flex;justify-content:space-between;align-items:center}
+.now-num{font-family:var(--f-en);font-size:92px;line-height:.9;direction:ltr;text-align:right;color:var(--teal);margin:14px 0 10px}
+.now-num.flash{animation:flash .7s var(--ease)}
+@keyframes flash{0%{transform:translateY(10px);opacity:0}100%{transform:none;opacity:1}}
+.now-who{display:flex;align-items:center;gap:12px}
+.now-who .avt{width:44px;height:44px}
+.now-who b{display:block;font-weight:500;font-size:17px;line-height:1.3}
+.now-who small{color:var(--muted);font-size:13px}
+.now .btn-block{margin:18px 0 16px}
+.wl-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.wl li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line-2);font-size:14px}
+.wl .tk{font-family:var(--f-en);font-size:22px;direction:ltr;min-width:50px;text-align:right}
+.wl .avt{width:30px;height:30px;font-size:12px}
+.wl .grow{flex:1;min-width:0}
+.wl small{color:var(--muted)}
+.wl .empty{color:var(--muted);justify-content:center}
+.now-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+/* list */
+.day{overflow:hidden}
+.day-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px 12px;flex-wrap:wrap}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:12.5px;direction:ltr;transition:background-color .2s,color .2s,border-color .2s}
+.filters button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.appt{display:grid;grid-template-columns:54px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid var(--line-2);transition:background-color .4s,opacity .4s}
+.appt .tm{font-size:13.5px;color:var(--ink-2);direction:ltr;text-align:right}
+.appt .who{display:flex;align-items:center;gap:10px;min-width:0}
+.appt .who .avt{width:38px;height:38px}
+.appt .meta{display:grid;gap:4px;justify-items:start;min-width:0}
+.appt .meta b{font-weight:500;line-height:1.3}
+.appt .tags{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.appt .tags small{color:var(--muted);font-size:12.5px}
+.appt .tags svg.brand{width:14px;height:14px}
+.appt.done{opacity:.5}
+.appt.chair{background:var(--teal-50)}
+.appt.free .meta b{color:var(--muted);font-weight:400}
+.appt.fresh{animation:fresh 1.8s var(--ease)}
+@keyframes fresh{0%{background:var(--teal-100)}100%{background:transparent}}
+.appt .btn{height:36px;padding:0 14px;font-size:13.5px}
+@media (max-width:400px){.appt{grid-template-columns:44px minmax(0,1fr) auto;gap:8px;padding:12px}.appt .who .avt{display:none}}
+.chip.sm{height:24px;font-size:11.5px;padding:0 10px}
+.chip .ltr{direction:ltr}
+.spin{width:12px;height:12px;border-radius:50%;border:2px solid currentColor;border-top-color:transparent;animation:rot .8s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.web{margin-bottom:12px;padding:14px 16px}
+.web li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line-2);font-size:14px}
+.web li:first-of-type{border-top:0}
+.web .grow{flex:1;min-width:0}
+.web small{color:var(--muted)}
+.foot-row{display:flex;justify-content:center;padding:14px 0 0}
+.foot-row button{font-size:12.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.pick{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.pick button{height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13.5px;transition:background-color .2s,color .2s}
+.pick button.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.lbl{display:block;font-size:13px;color:var(--ink-2);margin-bottom:6px}
+</style>
+</head>
+<body>
+<main>
+  <div class="p-head">
+    <div><span class="label" id="dDate"></span><h1 class="title">Today</h1></div>
+    <button class="btn btn-primary" data-add><i data-i="plus"></i>حجز جديد</button>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid">
+    <aside class="card now" aria-live="polite">
+      <div class="now-top"><span class="label">Now serving</span><span class="chip sm teal" id="inFor"></span></div>
+      <div class="now-num" id="nowNum">—</div>
+      <div class="now-who" id="nowWho"></div>
+      <button class="btn btn-ink btn-block" id="nextBtn">دخّل اللي بعده<i data-i="arrow"></i></button>
+      <div class="wl-title"><span class="label">Waiting</span><span class="chip sm" id="wCount"></span></div>
+      <ul class="wl" id="wl"></ul>
+      <div class="now-links">
+        <a class="sys" href="screen.html" target="_blank" rel="noopener"><i data-i="tv"></i>شاشة الانتظار</a>
+        <a class="sys" href="app.html" target="_blank" rel="noopener"><i data-i="user"></i>موبايل سارة</a>
+      </div>
+    </aside>
+
+    <section>
+      <div class="card web" id="web" hidden>
+        <span class="label">From website</span>
+        <ul id="webList"></ul>
+      </div>
+      <div class="card day">
+        <div class="day-top">
+          <span class="label">Schedule</span>
+          <div class="filters" id="filters">
+            <button class="on" data-f="all">All</button>
+            <button data-f="waiting">Waiting</button>
+            <button data-f="noreply">No reply</button>
+            <button data-f="free">Free</button>
+          </div>
+        </div>
+        <ul id="appts"></ul>
+      </div>
+      <div class="foot-row"><button id="reset">Reset demo</button></div>
+    </section>
+  </div>
+</main>
+
+<div class="sheet" id="add" role="dialog" aria-modal="true" aria-label="حجز جديد">
+  <div class="grip"></div>
+  <div class="sheet-head"><span class="label">New booking</span><button class="icon-btn sm" data-close aria-label="إغلاق"><i data-i="x"></i></button></div>
+  <h2 class="title">Add a patient</h2>
+  <p class="muted" style="margin-bottom:16px">التأكيد بيتبعت واتساب لوحده.</p>
+  <label class="field"><span>الاسم</span><input class="input" id="aName" autocomplete="off"></label>
+  <span class="lbl">الخدمة</span>
+  <div class="pick" id="aSvc"></div>
+  <span class="lbl">الميعاد</span>
+  <div class="pick" id="aTime"></div>
+  <p class="err-msg" id="aErr"></p>
+  <button class="btn btn-primary btn-block" id="aSave">حجز</button>
+</div>
+
+<script src="assets/ivory.js?v=3"></script>
+<script>
+(function () {
+  const { icon, brand, avatar, desk, queueFrom, store, toast, sheet, closeSheets, CLINIC } = IV;
+  IV.shell({ active: 'today', user: 'noha', search: 'دوّر على مريض…' });
+  const $ = (s) => document.querySelector(s);
+  let rows = desk.get();
+  let filter = 'all';
+  let query = '';
+  $('#dDate').textContent = IV.enDate();
+
+  const STATUS = {
+    done: ['', 'Done'],
+    chair: ['teal', 'In chair'],
+    waiting: ['ink', 'Waiting'],
+    confirmed: ['teal', 'Confirmed'],
+    noreply: ['coral', 'No reply'],
+    sending: ['line', 'Sending'],
+    free: ['line', 'Free'],
+  };
+
+  function save() { desk.set(rows); render(); }
+
+  function render() {
+    const booked = rows.filter((r) => r.st !== 'free');
+    const ok = booked.filter((r) => ['confirmed', 'waiting', 'chair', 'done'].includes(r.st)).length;
+    const nr = rows.filter((r) => r.st === 'noreply').length;
+    const fr = rows.filter((r) => r.st === 'free').length;
+    $('#kpis').innerHTML = `
+      <div class="kpi"><b>${booked.length}</b><span>Booked</span></div>
+      <div class="kpi"><b>${ok}</b><span>Confirmed</span></div>
+      <div class="kpi ${nr ? 'warn' : ''}"><b>${nr}</b><span>No reply</span></div>
+      <div class="kpi ${fr ? 'warn' : ''}"><b>${fr}</b><span>Free</span></div>`;
+
+    const q = queueFrom(rows);
+    const num = $('#nowNum');
+    const prev = num.textContent;
+    num.textContent = q.now ? 'A-' + q.now : '—';
+    if (prev !== num.textContent) { num.classList.remove('flash'); void num.offsetWidth; num.classList.add('flash'); }
+    const chair = rows.find((r) => r.st === 'chair');
+    $('#nowWho').innerHTML = chair
+      ? `${avatar(chair.name, chair.av)}<div><b>${chair.name}</b><small>${chair.svc}</small></div>`
+      : '<div><b>مفيش حد جوه</b></div>';
+    paintTimer();
+    $('#wCount').textContent = q.waiting.length;
+    $('#wl').innerHTML = q.waiting.length
+      ? q.waiting.map((w) => {
+        const r = rows.find((x) => x.n === w.n);
+        return `<li><span class="tk">A-${w.n}</span>${avatar(r.name, r.av)}<span class="grow">${r.name}</span><small>${r.svc}</small></li>`;
+      }).join('')
+      : '<li class="empty">مفيش حد مستني</li>';
+
+    const shown = rows.filter((r) => (filter === 'all' || r.st === filter) && (!query || (r.name || '').includes(query)));
+    $('#appts').innerHTML = shown.map((r) => {
+      const i = rows.indexOf(r);
+      const [chip, txt] = STATUS[r.st];
+      const tag = r.st === 'waiting' ? `<span class="chip sm ink"><span class="ltr">A-${r.n}</span></span>` : '';
+      const spin = r.st === 'sending' ? '<span class="spin"></span>' : '';
+      let act = '';
+      if (r.st === 'confirmed') act = `<button class="btn btn-ghost" data-arrive="${i}">وصل</button>`;
+      if (r.st === 'noreply') act = `<button class="btn btn-ghost" data-resend="${i}">${icon('chat')}ابعت تاني</button>`;
+      if (r.st === 'free') act = `<button class="btn btn-primary" data-fill="${i}">املاه</button>`;
+      return `<li class="appt ${r.st} ${r.fresh ? 'fresh' : ''}">
+        <span class="tm tnum">${r.t}</span>
+        <div class="who">
+          ${r.name ? avatar(r.name, r.av) : ''}
+          <div class="meta">
+            <b>${r.name || 'ميعاد فاضي'}</b>
+            <div class="tags">${r.src ? brand(r.src) : ''}${r.svc ? `<small>${r.svc}</small>` : ''}<span class="chip sm ${chip}">${spin}<span class="ltr">${txt}</span></span>${tag}</div>
+          </div>
+        </div>
+        <div>${act}</div>
+      </li>`;
+    }).join('') || '<li class="appt"><span></span><div class="meta"><small class="muted">مفيش نتايج.</small></div></li>';
+    rows.forEach((r) => delete r.fresh);
+
+    const web = store.get('ivory:bookings', []);
+    $('#web').hidden = !web.length;
+    $('#webList').innerHTML = web.slice(0, 4).map((b) => `
+      <li>${brand('web')}<span class="grow">${b.name} · ${b.svc}</span><small>${b.day} ${b.time}</small></li>`).join('');
+  }
+
+  function paintTimer() {
+    const chair = rows.find((r) => r.st === 'chair');
+    $('#inFor').textContent = chair && chair.since ? `جوه من ${IV.mins(chair.since)} دقيقة` : '—';
+  }
+  setInterval(paintTimer, 20000);
+
+  /* actions */
+  $('#nextBtn').addEventListener('click', () => {
+    const chair = rows.find((r) => r.st === 'chair');
+    const waiting = rows.filter((r) => r.st === 'waiting').sort((a, b) => a.n - b.n);
+    if (!chair && !waiting.length) { toast('مفيش حد مستني'); return; }
+    if (chair) chair.st = 'done';
+    if (waiting[0]) {
+      Object.assign(waiting[0], { st: 'chair', since: Date.now(), fresh: true });
+      toast(`${waiting[0].name} اتنادى على الشاشة`);
+    }
+    save();
+  });
+
+  $('#appts').addEventListener('click', (e) => {
+    const a = e.target.closest('[data-arrive]');
+    if (a) {
+      const r = rows[+a.dataset.arrive];
+      Object.assign(r, { st: 'waiting', n: Math.max(0, ...rows.map((x) => x.n || 0)) + 1, fresh: true });
+      toast(`${r.name} خد رقم A-${r.n}`);
+      save();
+      return;
+    }
+    const rs = e.target.closest('[data-resend]');
+    if (rs) {
+      const r = rows[+rs.dataset.resend];
+      r.st = 'sending';
+      render();
+      setTimeout(() => { r.st = 'confirmed'; r.fresh = true; save(); IV.feed.add({ ic: 'whatsapp', t: `${r.name} أكّد ميعاده ${r.t}` }); }, 1800);
+      return;
+    }
+    const f = e.target.closest('[data-fill]');
+    if (f) openAdd(+f.dataset.fill);
+  });
+
+  $('#filters').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-f]');
+    if (!b) return;
+    filter = b.dataset.f;
+    document.querySelectorAll('#filters button').forEach((x) => x.classList.toggle('on', x === b));
+    render();
+  });
+  $('#search').addEventListener('input', (e) => { query = e.target.value.trim(); render(); });
+
+  $('#reset').addEventListener('click', () => { desk.reset(); rows = desk.get(); render(); toast('رجعنا للبداية'); });
+
+  /* add booking */
+  const A = { svc: null, slot: null };
+  function openAdd(slotIndex) {
+    A.svc = null;
+    A.slot = slotIndex === undefined ? null : slotIndex;
+    $('#aName').value = '';
+    $('#aErr').textContent = '';
+    $('#aSvc').innerHTML = CLINIC.services.map((s) => `<button data-s="${s.ar}">${s.ar}</button>`).join('');
+    paintTimes();
+    sheet('add');
+    setTimeout(() => $('#aName').focus(), 350);
+  }
+  function paintTimes() {
+    const free = rows.map((r, i) => ({ r, i })).filter((x) => x.r.st === 'free');
+    $('#aTime').innerHTML = free.length
+      ? free.map((x) => `<button class="${A.slot === x.i ? 'on' : ''}" data-slot="${x.i}">${x.r.t}</button>`).join('')
+      : '<span class="muted" style="font-size:13px">مفيش مواعيد فاضية النهارده.</span>';
+  }
+  document.querySelector('[data-add]').addEventListener('click', () => openAdd());
+  $('#aSvc').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-s]');
+    if (!b) return;
+    A.svc = b.dataset.s;
+    document.querySelectorAll('#aSvc button').forEach((x) => x.classList.toggle('on', x === b));
+  });
+  $('#aTime').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-slot]');
+    if (!b) return;
+    A.slot = +b.dataset.slot;
+    paintTimes();
+  });
+  $('#aSave').addEventListener('click', () => {
+    const name = $('#aName').value.trim();
+    if (name.length < 2) { $('#aErr').textContent = 'اكتب اسم المريض.'; return; }
+    if (!A.svc) { $('#aErr').textContent = 'اختار الخدمة.'; return; }
+    if (A.slot === null) { $('#aErr').textContent = 'اختار الميعاد.'; return; }
+    Object.assign(rows[A.slot], { name, svc: A.svc, st: 'confirmed', src: 'walkin', fresh: true });
+    closeSheets();
+    toast('اتحجز ✓ والتأكيد اتبعت واتساب');
+    save();
+  });
+
+  /* live: other tabs + simulated activity */
+  desk.on((r) => { rows = r; render(); });
+  IV.onStore('ivory:bookings', () => {
+    const b = store.get('ivory:bookings', [])[0];
+    if (b) IV.feed.add({ ic: 'web', t: `حجز جديد من الموقع · ${b.name} · ${b.svc}` });
+    render();
+  });
+  IV.live([
+    { after: 7000, run() {
+      const r = rows.find((x) => x.st === 'noreply');
+      if (!r) return null;
+      Object.assign(r, { st: 'confirmed', fresh: true }); save();
+      return { ic: 'whatsapp', t: `${r.name} أكّد ميعاده ${r.t} على واتساب` };
+    } },
+    { after: 24000, run() {
+      const r = rows.find((x) => x.st === 'free');
+      if (!r) return null;
+      Object.assign(r, { name: 'ياسمين حسن', svc: 'تنضيف', st: 'confirmed', src: 'web', fresh: true }); save();
+      return { ic: 'web', t: `حجز جديد من الموقع · ياسمين حسن · ${r.t}` };
+    } },
+    { after: 47000, run() {
+      const r = rows.find((x) => x.st === 'noreply');
+      if (!r) return null;
+      Object.assign(r, { st: 'confirmed', fresh: true }); save();
+      return { ic: 'whatsapp', t: `${r.name} أكّد ميعاده ${r.t} على واتساب` };
+    } },
+  ]);
+
+  render();
+  IV.reveal();
+})();
+</script>
+</body>
+</html>
